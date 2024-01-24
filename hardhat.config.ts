@@ -8,9 +8,13 @@ const config: HardhatUserConfig = {
   defaultNetwork: 'goerli',
   networks: {
     goerli: {
-      url: process.env.GOERLI_RPC_URL as string,
+      url: process.env.RPC_URL as string,
       accounts: [process.env.PRIVATE_KEY as string],
-      sponsorUrl: 'http://localhost:3000',
+      sponsoredTransactions: {
+        bundlerUrl: process.env.BUNDLER_URL as string,
+        paymasterUrl: process.env.PAYMASTER_URL as string,
+        paymasterType: process.env.PAYMASTER_TYPE as string,
+      }
     }
   }
 };
